@@ -9,6 +9,13 @@ df = pd.read_csv("C:/Users/DOREEN WANYAMA/Downloads/sales_data_sample.csv", enco
 print("\nDetailed Information about the DataFrame:")
 df.info()
 
+# Find null values and print them with respective columns
+null_counts = df.isnull().sum()
+null_columns = null_counts[null_counts > 0].index.tolist()
+
+print(null_counts)
+print(null_columns)
+
 # Print the PRODUCTLINE column to check its contents
 
 print(df["PRODUCTLINE"].head())
@@ -82,6 +89,7 @@ top_5_customers = customer_sales_sorted.head(5)
 print("\nTop 5 Customers with Most Sales:")
 print(top_5_customers)
 
+
 # Create subplots for both visualizations
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
@@ -102,3 +110,4 @@ ax2.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Se
 
 plt.tight_layout()
 plt.show()
+
