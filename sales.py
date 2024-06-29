@@ -7,6 +7,8 @@ df = pd.read_csv("C:/Users/DOREEN WANYAMA/Downloads/sales_data_sample.csv", enco
 # Print detailed information about the DataFrame
 print("\nDetailed Information about the DataFrame:")
 df.info()
+#finding the number of rows and columns in the dataframe
+print(df.shape)
 
 # Find null values and print them with respective columns
 null_counts = df.isnull().sum()
@@ -79,6 +81,7 @@ top_5_customers = customer_sales_sorted.head(5)
 # Print the top 5 customers with most sales
 print("\nTop 5 Customers with Most Sales:")
 print(top_5_customers)
+
 
 # Create subplots for both visualizations
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
