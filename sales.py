@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 # Load the DataFrame
 df = pd.read_csv("C:/Users/DOREEN WANYAMA/Downloads/sales_data_sample.csv", encoding='ISO-8859-1')
 
-
 # Print detailed information about the DataFrame
 print("\nDetailed Information about the DataFrame:")
 df.info()
@@ -12,12 +11,10 @@ df.info()
 # Find null values and print them with respective columns
 null_counts = df.isnull().sum()
 null_columns = null_counts[null_counts > 0].index.tolist()
-
 print(null_counts)
 print(null_columns)
 
 # Print the PRODUCTLINE column to check its contents
-
 print(df["PRODUCTLINE"].head())
 
 # Group by PRODUCTLINE and sum the SALES column
@@ -54,12 +51,6 @@ top_5_sales_by_city = sales_by_city.sort_values(ascending=False).head(5)
 print("\nTop 5 cities with the most sales:")
 print(top_5_sales_by_city)
 
-# Cities with less sales
-sales_by_city = df.groupby('CITY')['SALES'].sum()
-top_5_sales_by_city = sales_by_city.sort_values(ascending=True).head(5)
-print("\nTop 5 cities with the most sales:")
-print(top_5_sales_by_city)
-
 # Group by MONTH_ID and sum the SALES column
 sales_by_month = df.groupby('MONTH_ID')['SALES'].sum()
 print(sales_by_month)
@@ -89,7 +80,6 @@ top_5_customers = customer_sales_sorted.head(5)
 print("\nTop 5 Customers with Most Sales:")
 print(top_5_customers)
 
-
 # Create subplots for both visualizations
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
@@ -109,5 +99,14 @@ ax2.set_xticks(range(1, 13))
 ax2.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
 plt.tight_layout()
-plt.show()
 
+# Display the pie chart for total sales by PRODUCTLINE
+plt.figure(figsize=(8, 6))  # Optional: Adjust figure size
+
+# Plotting the pie chart with percentages shown and rounded to 1 decimal place
+plt.pie(product_sales, labels=product_sales.index, autopct='%1.1f%%', startangle=140)
+
+plt.title('Total Sales by PRODUCTLINE')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+plt.show()
